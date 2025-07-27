@@ -1,0 +1,269 @@
+    <!DOCTYPE html>
+    <html lang="en" class="light"> <!-- THEME CONTROL: Change to "dark" to switch to dark mode -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- PAGE TITLE: This appears in browser tab and search results -->
+        <title>Tech Projects - Devansh Gupta</title>
+        <!-- CSS LINK: Change "tech.css" to different filename if you rename your stylesheet -->
+        <link rel="stylesheet" href="tech.css">
+        <!-- FONT AWESOME: Remove this if you don't want icons, but will break all <i> elements -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- ============== NAVIGATION BAR ============== -->
+        <!-- This is the top navigation that stays fixed on scroll -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- LOGO/BRAND: Change "Your Name" to your actual name -->
+                <div class="nav-logo">
+                    <h2><a href="index.html">Devansh Gupta</a></h2> <!-- CLICKING: Takes user to homepage -->
+                </div>
+                
+                <!-- MAIN NAVIGATION MENU: These are the main page links -->
+                <ul class="nav-menu" id="nav-menu"> <!-- ID: Used by JavaScript for mobile toggle -->
+                    <li class="nav-item">
+                        <!-- HOME LINK: Remove "index.html#home" if you don't have anchor sections -->
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- BLOGS LINK: Change href if your blogs page has different name -->
+                        <a href="blogs.html" class="nav-link">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- ACTIVE LINK: "active" class highlights current page - remove if not on projects page -->
+                        <a href="tech-projects.html" class="nav-link active">Tech Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- RECRUITERS LINK: Change href if your recruiters page has different name -->
+                        <a href="for-recruiters.html" class="nav-link">For Recruiters</a>
+                    </li>
+                </ul>
+                
+                <!-- MOBILE MENU TOGGLE: Hamburger menu for mobile devices -->
+                <div class="nav-toggle" id="mobile-menu"> <!-- ID: JavaScript uses this to toggle mobile menu -->
+                    <!-- HAMBURGER BARS: These create the ≡ icon, removing any breaks mobile menu -->
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <!-- THEME TOGGLE BUTTON: Switches between light/dark mode -->
+                <button class="theme-toggle" id="theme-toggle"> <!-- ID: JavaScript uses this for theme switching -->
+                    <!-- ICON: fa-moon for light mode, fa-sun for dark mode - JavaScript changes this -->
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+
+        <!-- ============== HERO/BANNER SECTION ============== -->
+        <!-- This is the main banner area at the top of the page -->
+        <section class="page-hero">
+            <div class="container"> <!-- CONTAINER: Centers content and adds padding -->
+                <div class="hero-content">
+                    <!-- MAIN TITLE: Change "Tech Projects" to whatever you want as page heading -->
+                    <h1 class="page-title">Tech Projects</h1>
+                    <!-- SUBTITLE: Change this description to match your content -->
+                    <p class="page-subtitle">A showcase of my technical skills, creativity, and problem-solving abilities</p>
+                    
+                    <!-- STATISTICS DISPLAY: These show your achievements/metrics -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <!-- STAT NUMBER: Change "15+" to your actual project count -->
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span> <!-- LABEL: Describes what the number represents -->
+                        </div>
+                        <div class="stat-item">
+                            <!-- TECHNOLOGIES: Update number based on how many technologies you use -->
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-item">
+                            <!-- EXPERIENCE: Update based on your years of experience -->
+                            <span class="stat-number">0 Years</span>
+                            <span class="stat-label">Currently Fresher</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== PROJECT FILTERS ============== -->
+        <!-- These buttons filter projects by category -->
+        <section class="project-filters">
+            <div class="container">
+                <div class="filter-controls">
+                    <!-- FILTER BUTTONS: data-filter attribute controls which projects show -->
+                    <!-- "active" class shows which filter is currently selected -->
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    
+                    <!-- PROGRAMMING LANGUAGES -->
+                    <button class="filter-btn" data-filter="cpp">C++</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                    <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                    
+                    <!-- TECHNOLOGIES & FRAMEWORKS -->
+                    <button class="filter-btn" data-filter="react">React</button>
+                    <button class="filter-btn" data-filter="nodejs">Node.js</button>
+                    <button class="filter-btn" data-filter="database">Database</button>
+                    
+                    <!-- DATA SCIENCE & ANALYTICS -->
+                    <button class="filter-btn" data-filter="datascience">Data Science</button>
+                    <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                    <button class="filter-btn" data-filter="visualization">Data Visualization</button>
+                    
+                    <!-- TOOLS & PLATFORMS -->
+                    <button class="filter-btn" data-filter="cloud">Cloud/Deployment</button>
+                    <button class="filter-btn" data-filter="tools">Dev Tools</button>
+                    <button class="filter-btn" data-filter="api">APIs</button>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- ============== ALL PROJECTS GRID ============== -->
+    <section class="all-projects">
+        <div class="container">
+            <h2 class="section-title">All Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- ============== WEBSITE PROJECT 1 ============== -->
+                <div class="project-card" data-category="visualization"> <!-- Use appropriate filter category -->
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-desktop"></i> <!-- Desktop/website icon -->
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="https://github.com/devansh-112/Weather-Data-Analysis-Dashboard.git" title="View Project">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/devansh-112/Weather-Data-Analysis-Dashboard.git" class="project-link" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <span class="status-badge live">inactive</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">Weather-Data-Analysis-Dashboard</h3>
+                        <p class="project-description">
+                            This is proect Based on the Technologies like Python, Numpy , matplotlib. THis analyses the weather from last 3 years and give it in a graph format.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">matplotlib</span>
+                            <span class="tech-tag">Numpy</span>
+                            <!-- Add framework if used: Bootstrap, React, etc. -->
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-eye"></i>
+                                <span>Page Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        <!-- ============== GITHUB STATISTICS ============== -->
+        <!-- This section shows your GitHub activity and achievements -->
+        <section class="github-stats">
+            <div class="container">
+                <h2 class="section-title">GitHub Activity</h2>
+                <div class="stats-grid"> <!-- GRID: Creates responsive layout for stat cards -->
+                    <!-- REPOSITORIES STAT -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fab fa-github"></i> <!-- GITHUB ICON: Brand recognition -->
+                        </div>
+                        <div class="stat-content">
+                            <!-- REPO COUNT: Update with your actual GitHub repository count -->
+                            <h3 class="stat-number">15+</h3>
+                            <p class="stat-label">Repositories</p>
+                        </div>
+                    </div>
+                    
+                    <!-- STARS EARNED STAT -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i> <!-- STAR ICON: Represents GitHub stars -->
+                        </div>
+                        <div class="stat-content">
+                            <!-- STARS COUNT: Update with total stars across all repos -->
+                            <h3 class="stat-number">0</h3>
+                            <p class="stat-label">Stars Earned</p>
+                        </div>
+                    </div>
+                    
+                    <!-- COMMITS STAT -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code-branch"></i> <!-- BRANCH ICON: Represents commits -->
+                        </div>
+                        <div class="stat-content">
+                            <!-- COMMITS COUNT: Update with your total commit count -->
+                            <h3 class="stat-number">30+</h3>
+                            <p class="stat-label">Commits</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FOLLOWERS STAT -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i> <!-- USERS ICON: Represents followers -->
+                        </div>
+                        <div class="stat-content">
+                            <!-- FOLLOWERS COUNT: Update with your GitHub followers -->
+                            <h3 class="stat-number">0</h3>
+                            <p class="stat-label">Follower(as of now)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GITHUB PROFILE LINK -->
+                <div class="github-link">
+                    <!-- GITHUB PROFILE: Update href with your actual GitHub profile URL -->
+                    <a href="https://github.com/devansh-112" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        View My GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== FOOTER ============== -->
+        <!-- Site footer with copyright and navigation links -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <!-- COPYRIGHT: Update year and name -->
+                    <div class="footer-text">
+                        <p>&copy; 2024 Devansh Gupta. All rights reserved.</p>
+                    </div>
+                    <!-- FOOTER NAVIGATION: Quick links to main pages -->
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="blogs.html">Blogs</a>
+                        <a href="tech-projects.html">Projects</a>
+                        <a href="for-recruiters.html">For Recruiters</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- ============== JAVASCRIPT FILES ============== -->
+        <!-- MAIN SCRIPT: Contains theme toggle, mobile menu, and general funionality -->
+        <script src="script.js"></script>
+        <!-- PROJECTS SCRIPT: Contains project filtering functionality -->
+        <script src="projects.js"></script>
+        <!-- IMPORTANT: Both scripts must exist for full functionality -->
+    </body>
+    </html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- EDIT: Change the page title that appears in browser tab -->
+    <title>Blogs - Devansh Gupta</title>
+    <link rel="stylesheet" href="blogs.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ==================== NAVIGATION SECTION ==================== -->
+    <!-- EDIT: This is your main navigation bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- EDIT: Change "Your Name" to your actual name or brand -->
+            <div class="nav-logo">
+                <h2><a href="index.html">Devansh Gupta</a></h2>
+            </div>
+            
+            <!-- EDIT: Add/remove/modify navigation menu items -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Current page - marked as active -->
+                    <a href="blogs.html" class="nav-link active">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tech-projects.html" class="nav-link">Tech Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="for-recruiters.html" class="nav-link">For Recruiters</a>
+                </li>
+            </ul>
+            
+            <!-- Mobile menu toggle - don't edit unless you know what you're doing -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Theme toggle button - change icon if needed -->
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- EDIT: This is the main banner area with your blog title and stats -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- EDIT: Change the main heading and description -->
+                <h1 class="page-title">Stories@Devansh Gupta</h1>
+                <p class="page-subtitle">An engineer by degree, a storyteller by destiny — because an engineer can be anything but engineer.</p>
+                
+                <!-- EDIT: Update these statistics with your actual numbers -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Stories Coming Soon</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== BLOG CATEGORIES FILTER ==================== -->
+    <!-- EDIT: Add/remove category filter buttons based on your blog topics -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All Posts</button>
+                <button class="filter-btn" data-category="short-stories">Short Stories</button>
+                <button class="filter-btn" data-category="essays">Essays</button>
+                <button class="filter-btn" data-category="poetry">Poetry</button>
+                <button class="filter-btn" data-category="novel">Novel</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FEATURED ARTICLE ==================== -->
+    <!-- EDIT: This showcases your most important/recent blog post -->
+    <section class="featured-post">
+        <div class="container">
+            <h2 class="section-title">Featured Story</h2>
+            <article class="featured-article">
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <!-- EDIT: Update article metadata -->
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                Coming Soon <!-- EDIT: Change date -->
+                            </span>
+                            <span class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                -- min read <!-- EDIT: Change reading time -->
+                            </span>
+                            <span class="article-category featured-category">Featured</span> <!-- EDIT: Change category -->
+                        </div>
+                        
+                        <!-- EDIT: Change the featured article title -->
+                        <h3 class="featured-title">Stories Coming Soon</h3>
+                        
+                        <!-- EDIT: Write your own article description -->
+                        <p class="featured-excerpt">
+                            Get ready to dive into a world of imagination and emotion. From heartwarming 
+                            short stories to thought-provoking essays, captivating poetry to engaging novels - 
+                            a collection of stories that explore the human experience through different lenses.
+                        </p>
+                        
+                        <!-- EDIT: Add relevant tags for your article -->
+                        <div class="article-tags">
+                            <span class="tag">Stories</span>
+                            <span class="tag">Writing</span>
+                            <span class="tag">Literature</span>
+                            <span class="tag">Coming Soon</span>
+                        </div>
+                        
+                        <!-- EDIT: Update the link to your actual article -->
+                        <a href="#" class="btn btn-primary">Stay Tuned</a>
+                    </div>
+                    
+                    <!-- EDIT: Change the icon to match your article topic -->
+                    <div class="featured-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-feather-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- ==================== ALL BLOG POSTS GRID ==================== -->
+    <!-- EDIT: This section contains all your blog post cards -->
+    <section class="all-posts">
+        <div class="container">
+            <h2 class="section-title">All Stories</h2>
+            <div class="blog-grid">
+                
+                <!-- Stories will be added here as they are published -->
+                <div class="coming-soon-message">
+                    <div class="coming-soon-content">
+                        <i class="fas fa-pen-fancy"></i>
+                        <h3>Stories in Progress</h3>
+                        <p>Currently crafting beautiful stories across different genres. Check back soon for updates!</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ==================== LOAD MORE BUTTON ==================== -->
+            <!-- EDIT: Customize the load more button text -->
+            <div class="load-more-section" style="display: none;">
+                <button class="btn btn-secondary load-more-btn">
+                    <i class="fas fa-plus"></i>
+                    Load More Stories
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== NEWSLETTER SIGNUP ==================== -->
+    <!-- EDIT: Customize your newsletter section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <!-- EDIT: Change newsletter heading and description -->
+                    <h2>Stay Updated</h2>
+                    <p>Get notified when I publish new stories and writings. No spam, unsubscribe anytime.</p>
+                </div>
+                <!-- EDIT: Update form action to your email service -->
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- EDIT: Update footer information -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <!-- EDIT: Change copyright text and year -->
+                    <p>&copy; 2024 Devansh Gupta. All rights reserved.</p>
+                </div>
+                <!-- EDIT: Update footer navigation links -->
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="blogs.html">Blogs</a>
+                    <a href="tech-projects.html">Projects</a>
+                    <a href="for-recruiters.html">For Recruiters</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- JavaScript files - don't edit unless you know what you're doing -->
+    <script src="script.js"></script>
+    <script src="blogs.js"></script>
+</body>
+</html>

@@ -1,0 +1,1630 @@
+/* ==========================================================================
+   FOR RECRUITERS PAGE - DEDICATED STYLESHEET
+   Author: Devansh Gupta
+   Purpose: Clean, organized CSS specifically for the recruiters page
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS RESET & BASE SETUP
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+/* ==========================================================================
+   2. CSS CUSTOM PROPERTIES (THEME VARIABLES)
+   ========================================================================== */
+
+/* Light Theme (Default) */
+:root {
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 16px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Colors - Light Mode */
+    --color-background: #ffffff;
+    --color-foreground: #1a1a1a;
+    --color-primary: #2563eb;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #f1f5f9;
+    --color-secondary-foreground: #334155;
+    --color-accent: #e2e8f0;
+    --color-accent-foreground: #1e293b;
+    --color-muted: #f8fafc;
+    --color-muted-foreground: #64748b;
+    --color-border: #e2e8f0;
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    
+    /* Layout & Spacing */
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --container-max-width: 1200px;
+    --navbar-height: 70px;
+    --section-padding: 4rem;
+    --section-padding-mobile: 2rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Dark Theme - Bluish Dark Version (Consistent with Previous Pages) */
+.dark {
+    --color-background: #0b0f1a;          /* Dark blue-black background */
+    --color-foreground: #e2e8f0;          /* Cool white text */
+    --color-primary: #60a5fa;             /* Light blue accent */
+    --color-primary-foreground: #0f172a;   /* Dark blue text on primary */
+    --color-secondary: #1e293b;           /* Dark blue secondary */
+    --color-secondary-foreground: #cbd5e1; /* Light blue-gray text */
+    --color-accent: #334155;              /* Medium blue-gray accent */
+    --color-accent-foreground: #f1f5f9;   /* Very light blue-gray */
+    --color-muted: #0f172a;              /* Dark blue muted */
+    --color-muted-foreground: #94a3b8;    /* Blue-gray text */
+    --color-border: #334155;             /* Blue-gray borders */
+    
+    /* Bluish shadows */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.8);
+    --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.6);
+    --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.7);
+    --shadow-xl: 0 20px 25px rgba(15, 23, 42, 0.8);
+}
+
+/* ==========================================================================
+   3. BASE TYPOGRAPHY & ELEMENTS
+   ========================================================================== */
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    padding-top: var(--navbar-height);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   4. LAYOUT UTILITIES
+   ========================================================================== */
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: var(--section-padding) 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 3rem;
+    color: var(--color-foreground);
+}
+
+/* ==========================================================================
+   5. NAVIGATION BAR - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme navbar enhancements */
+.dark .navbar {
+    background: rgba(11, 15, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-logo h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+}
+
+.nav-logo a {
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+.nav-logo a:hover {
+    opacity: 0.8;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--color-muted-foreground);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+}
+
+.theme-toggle {
+    padding: 0.75rem;
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border-radius: var(--border-radius);
+    margin-left: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+    background: var(--color-accent);
+    transform: scale(1.05);
+}
+
+/* Mobile Navigation */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.bar {
+    width: 24px;
+    height: 3px;
+    background: var(--color-foreground);
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+.nav-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ==========================================================================
+   6. HERO SECTION - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.page-hero {
+    padding: calc(var(--navbar-height) + 3rem) 0 var(--section-padding);
+    background: linear-gradient(135deg, var(--color-background), var(--color-muted));
+    text-align: center;
+}
+
+/* Dark theme hero enhancements */
+.dark .page-hero {
+    background: linear-gradient(135deg, #0b0f1a 0%, #0f172a 50%, #1e293b 100%);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-foreground));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   7. BUTTONS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme primary button enhancements */
+.dark .btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark theme primary button hover enhancements */
+.dark .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: var(--color-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   8. QUICK OVERVIEW SECTION - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.quick-overview {
+    padding: var(--section-padding) 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme overview enhancements */
+.dark .quick-overview {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.overview-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme overview card enhancements */
+.dark .overview-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.overview-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+/* Dark theme overview card hover enhancements */
+.dark .overview-card:hover {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.2),
+        0 12px 32px rgba(15, 23, 42, 0.6);
+}
+
+.overview-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    transition: all var(--transition-normal);
+}
+
+.overview-card:hover .overview-icon {
+    transform: scale(1.1);
+}
+
+.overview-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.overview-content p {
+    color: var(--color-muted-foreground);
+    margin: 0;
+}
+
+/* ==========================================================================
+   9. PROFESSIONAL SUMMARY - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.professional-summary {
+    padding: var(--section-padding) 0;
+    background: var(--color-background);
+}
+
+.summary-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.summary-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: var(--color-muted-foreground);
+}
+
+.summary-highlights {
+    margin-bottom: 2rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--color-muted);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+}
+
+/* Dark theme highlight item enhancements */
+.dark .highlight-item {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+}
+
+.highlight-item:hover {
+    transform: translateX(10px);
+    background: var(--color-accent);
+}
+
+.highlight-item i {
+    color: var(--color-success);
+    font-size: 1.125rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.summary-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-muted);
+    border-radius: var(--border-radius-lg);
+    width: 100%;
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme stat item enhancements */
+.dark .stat-item {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   10. TECHNICAL SKILLS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.technical-skills {
+    padding: var(--section-padding) 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme skills section enhancements */
+.dark .technical-skills {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.skill-category {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme skill category enhancements */
+.dark .skill-category {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-foreground);
+    margin-bottom: 2rem;
+}
+
+.category-title i {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-item {
+    margin-bottom: 1rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.skill-name {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-foreground);
+}
+
+.skill-level {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ==========================================================================
+   11. EXPERIENCE TIMELINE - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.experience-timeline {
+    padding: var(--section-padding) 0;
+    background: var(--color-background);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+    border-radius: 2px;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-date {
+    flex: 0 0 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 1rem;
+}
+
+.date-badge {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-lg);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.875rem;
+    position: relative;
+    z-index: 2;
+}
+
+.date-badge.current {
+    background: linear-gradient(135deg, var(--color-success), var(--color-primary));
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    margin: 0 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme timeline content enhancements */
+.dark .timeline-content {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.job-header {
+    margin-bottom: 1.5rem;
+}
+
+.job-title {
+    font-size: 1.375rem;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.company-name {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 0.25rem;
+}
+
+.job-location {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+.job-description p {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.achievement-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.achievement-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-foreground);
+    line-height: 1.6;
+}
+
+.achievement-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+}
+
+.job-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+}
+
+.tech-tag:hover {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   12. EDUCATION & CERTIFICATIONS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.education-certs {
+    padding: var(--section-padding) 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme education section enhancements */
+.dark .education-certs {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.education-item {
+    display: flex;
+    gap: 2rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme education item enhancements */
+.dark .education-item {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.education-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+.education-item:hover .education-icon {
+    transform: scale(1.1);
+}
+
+.degree {
+    font-size: 1.25rem;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 0.5rem;
+}
+
+.education-year {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+}
+
+.education-details {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Dark theme cert item enhancements */
+.dark .cert-item {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.cert-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.cert-badge {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.cert-info h4 {
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+}
+
+.cert-info p {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ==========================================================================
+   13. CONTACT & DOWNLOADS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.contact-downloads {
+    padding: var(--section-padding) 0;
+    background: var(--color-background);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--color-muted);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme contact method enhancements */
+.dark .contact-method {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.contact-info h4 {
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.contact-info a {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.contact-info p {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.download-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.download-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+}
+
+/* Dark theme download item enhancements */
+.dark .download-item {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.download-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.download-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.download-info {
+    flex: 1;
+}
+
+.download-info h4 {
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+}
+
+.download-info p {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.download-item > i {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+/* ==========================================================================
+   14. AVAILABILITY & PREFERENCES - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.availability-prefs {
+    padding: var(--section-padding) 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme availability section enhancements */
+.dark .availability-prefs {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.prefs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.availability-card,
+.preferences-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme availability/preferences card enhancements */
+.dark .availability-card,
+.dark .preferences-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.availability-card:hover,
+.preferences-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.availability-card h3,
+.preferences-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-foreground);
+    margin-bottom: 2rem;
+}
+
+.availability-card h3 i,
+.preferences-card h3 i {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.availability-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--color-muted);
+    border-radius: var(--border-radius);
+}
+
+/* Dark theme availability status enhancements */
+.dark .availability-status {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-indicator.available {
+    background: var(--color-success);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.status-text {
+    color: var(--color-foreground);
+    font-weight: var(--font-weight-medium);
+}
+
+.availability-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-muted-foreground);
+}
+
+.detail-item i {
+    color: var(--color-primary);
+    width: 20px;
+}
+
+.preference-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.preference-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: var(--color-muted);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+}
+
+/* Dark theme preference item enhancements */
+.dark .preference-item {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+}
+
+.preference-item:hover {
+    transform: translateX(10px);
+    background: var(--color-accent);
+}
+
+.preference-item i {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    width: 30px;
+    text-align: center;
+}
+
+.preference-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.pref-title {
+    color: var(--color-foreground);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 0.25rem;
+}
+
+.pref-desc {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   15. FOOTER - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.footer {
+    background: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--color-muted-foreground);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   16. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: var(--section-padding-mobile);
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Mobile Navigation */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: var(--navbar-height);
+        flex-direction: column;
+        background: var(--color-background);
+        width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        text-align: center;
+        transition: var(--transition-normal);
+        box-shadow: var(--shadow-lg);
+        border-top: 1px solid var(--color-border);
+        padding: 2rem 0;
+        overflow-y: auto;
+        gap: 1rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Hero Section */
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    /* Overview Grid */
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Summary Content */
+    .summary-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .summary-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Skills Container */
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Timeline */
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        padding-left: 60px;
+    }
+
+    .timeline-date {
+        position: absolute;
+        left: 0;
+        top: 1rem;
+        flex: none;
+    }
+
+    .date-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .timeline-content {
+        margin: 0;
+    }
+
+    /* Education Grid */
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .education-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Preferences Grid */
+    .prefs-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .overview-card {
+        padding: 1.5rem;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .skill-category {
+        padding: 1.5rem;
+    }
+
+    .education-item {
+        padding: 1.5rem;
+    }
+
+    .contact-method,
+    .download-item {
+        padding: 1rem;
+    }
+
+    .availability-card,
+    .preferences-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   17. ACCESSIBILITY & REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==========================================================================
+   18. THEME TRANSITION ENHANCEMENTS
+   ========================================================================== */
+
+* {
+    transition: 
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+/* Ensure smooth theme transitions */
+.navbar,
+.overview-card,
+.skill-category,
+.timeline-content,
+.education-item,
+.cert-item,
+.contact-method,
+.download-item,
+.availability-card,
+.preferences-card,
+.btn,
+.footer {
+    transition: 
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal),
+        transform var(--transition-fast);
+}
+
+/* ==========================================================================
+   19. ANIMATIONS & SPECIAL EFFECTS
+   ========================================================================== */
+
+/* Staggered animation for overview cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.overview-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.overview-card:nth-child(1) { animation-delay: 0.1s; }
+.overview-card:nth-child(2) { animation-delay: 0.2s; }
+.overview-card:nth-child(3) { animation-delay: 0.3s; }
+.overview-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Timeline item animation */
+.timeline-item {
+    animation: slideInFromSide 0.8s ease forwards;
+}
+
+@keyframes slideInFromSide {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Skill bar animation */
+.skill-progress {
+    animation: fillBar 2s ease-out forwards;
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--skill-width, 0%); }
+}
+
+/* ==========================================================================
+   END OF FOR-RECRUITERS.CSS
+   ========================================================================== */

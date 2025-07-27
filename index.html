@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devansh Gupta – Portfolio</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- ============== NAVIGATION BAR ============== -->
+  <!-- This is the top navigation menu that appears on all pages -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Logo/Name in the navigation -->
+      <div class="nav-logo">
+        <h2><a href="index.html">Devansh&nbsp;Gupta</a></h2>
+      </div>
+
+      <!-- Main navigation menu items -->
+      <ul class="nav-menu" id="nav-menu">
+        <!-- Note: hash (#) links work for same-page navigation -->
+        <li class="nav-item">
+          <a href="index.html#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="blogs.html" class="nav-link">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a href="tech-projects.html" class="nav-link">Tech Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="for-recruiters.html" class="nav-link">For Recruiters</a>
+        </li>
+      </ul>
+
+      <!-- Mobile menu toggle button (hamburger menu) -->
+      <div class="nav-toggle" id="mobile-menu" aria-label="Toggle menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+
+      <!-- Dark/Light mode toggle button -->
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============== HOME/HERO SECTION ============== -->
+  <!-- Main landing section with introduction and call-to-action buttons -->
+  <section id="home" class="section home-section">
+    <div class="container">
+      <div class="hero-content">
+        
+        <!-- Main introduction text -->
+        <div class="hero-text">
+          <!-- Main heading with name -->
+          <h1 class="hero-title">Hello, I'm <span class="highlight">Devansh Gupta</span></h1>
+          
+          <!-- Updated subtitle with your personal tagline -->
+          <h2 class="hero-subtitle">Writer by heart, Engineer by brain, Storyteller by soul</h2>
+          
+          <!-- Brief description about yourself -->
+          <p class="hero-description">
+            I create digital experiences that are intuitive, accessible, and delightful.
+            Passionate about clean code, modern design, and solving complex problems.
+          </p>
+
+          <!-- ============== MINI SECTIONS ============== -->
+          <!-- Three quick navigation sections as requested -->
+          <div class="hero-sections">
+            <!-- Section 1: For Readers -->
+            <div class="mini-section">
+              <h3>For Readers</h3>
+              <p>Explore my thoughts, stories, and insights</p>
+              <button class="btn btn-outline" type="button" onclick="window.location.href='blogs.html'">
+                Read My Blogs
+              </button>
+            </div>
+
+            <!-- Section 2: For Recruiters -->
+            <div class="mini-section">
+              <h3>For Recruiters</h3>
+              <p>Professional experience and capabilities</p>
+              <button class="btn btn-outline" type="button" onclick="window.location.href='for-recruiters.html'">
+                View Resume
+              </button>
+            </div>
+
+            <!-- Section 3: Projects -->
+            <div class="mini-section">
+              <h3>Projects</h3>
+              <p>Technical projects and innovations</p>
+              <button class="btn btn-outline" type="button" onclick="window.location.href='tech-projects.html'">
+                Explore Work
+              </button>
+            </div>
+          </div>
+
+          <!-- ============== SOCIAL LINKS ============== -->
+          <!-- Professional and coding platform links -->
+          <div class="social-links">
+            <!-- GitHub - For code repositories -->
+            <a class="social-link" href="https://github.com/devanshgupta" target="_blank" rel="noopener">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+            
+            <!-- LinkedIn - Professional networking -->
+            <a class="social-link" href="https://linkedin.com/in/devanshgupta" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            
+            <!-- LeetCode - Coding practice and algorithms -->
+            <a class="social-link" href="https://leetcode.com/devanshgupta" target="_blank" rel="noopener">
+              <i class="fas fa-code" aria-hidden="true"></i>
+              <span class="sr-only">LeetCode</span>
+            </a>
+            
+            <!-- HackerRank - Programming challenges and skills -->
+            <a class="social-link" href="https://hackerrank.com/devanshgupta" target="_blank" rel="noopener">
+              <i class="fab fa-hackerrank" aria-hidden="true"></i>
+              <span class="sr-only">HackerRank</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== JAVASCRIPT FILES ============== -->
+  <!-- Add your JavaScript files here -->
+  <script src="script.js"></script>
+  
+  <!-- Theme toggle functionality -->
+  <script>
+    // Set dark mode as default when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const html = document.documentElement;
+      html.classList.add('dark');
+      
+      // Update theme toggle icon
+      const themeToggle = document.getElementById('theme-toggle');
+      const icon = themeToggle.querySelector('i');
+      icon.className = 'fas fa-sun'; // Show sun icon in dark mode
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1203 @@
+/* ==========================================================================
+   TECH PROJECTS PAGE - DEDICATED STYLESHEET
+   Author: Devansh Gupta
+   Purpose: Clean, organized CSS specifically for the tech projects page
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS RESET & BASE SETUP
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+/* ==========================================================================
+   2. CSS CUSTOM PROPERTIES (THEME VARIABLES)
+   ========================================================================== */
+
+/* Light Theme (Default) */
+:root {
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 16px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Colors - Light Mode */
+    --color-background: #ffffff;
+    --color-foreground: #1a1a1a;
+    --color-primary: #2563eb;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #f1f5f9;
+    --color-secondary-foreground: #334155;
+    --color-accent: #e2e8f0;
+    --color-accent-foreground: #1e293b;
+    --color-muted: #f8fafc;
+    --color-muted-foreground: #64748b;
+    --color-border: #e2e8f0;
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    
+    /* Layout & Spacing */
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --container-max-width: 1200px;
+    --navbar-height: 70px;
+    --section-padding: 4rem;
+    --section-padding-mobile: 2rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Dark Theme - Bluish Dark Version (Consistent with Index) */
+.dark {
+    --color-background: #0b0f1a;          /* Dark blue-black background */
+    --color-foreground: #e2e8f0;          /* Cool white text */
+    --color-primary: #60a5fa;             /* Light blue accent */
+    --color-primary-foreground: #0f172a;   /* Dark blue text on primary */
+    --color-secondary: #1e293b;           /* Dark blue secondary */
+    --color-secondary-foreground: #cbd5e1; /* Light blue-gray text */
+    --color-accent: #334155;              /* Medium blue-gray accent */
+    --color-accent-foreground: #f1f5f9;   /* Very light blue-gray */
+    --color-muted: #0f172a;              /* Dark blue muted */
+    --color-muted-foreground: #94a3b8;    /* Blue-gray text */
+    --color-border: #334155;             /* Blue-gray borders */
+    
+    /* Bluish shadows */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.8);
+    --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.6);
+    --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.7);
+    --shadow-xl: 0 20px 25px rgba(15, 23, 42, 0.8);
+}
+
+/* ==========================================================================
+   3. BASE TYPOGRAPHY & ELEMENTS
+   ========================================================================== */
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    padding-top: var(--navbar-height);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   4. LAYOUT UTILITIES
+   ========================================================================== */
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: var(--section-padding) 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 3rem;
+    color: var(--color-foreground);
+}
+
+/* ==========================================================================
+   5. NAVIGATION BAR - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme navbar enhancements */
+.dark .navbar {
+    background: rgba(11, 15, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-logo h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+}
+
+.nav-logo a {
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+.nav-logo a:hover {
+    opacity: 0.8;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--color-muted-foreground);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+}
+
+.theme-toggle {
+    padding: 0.75rem;
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border-radius: var(--border-radius);
+    margin-left: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+    background: var(--color-accent);
+    transform: scale(1.05);
+}
+
+/* Mobile Navigation */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.bar {
+    width: 24px;
+    height: 3px;
+    background: var(--color-foreground);
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+.nav-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ==========================================================================
+   6. HERO SECTION - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.page-hero {
+    padding: calc(var(--navbar-height) + 3rem) 0 var(--section-padding);
+    background: linear-gradient(135deg, var(--color-background), var(--color-muted));
+    text-align: center;
+}
+
+/* Dark theme hero enhancements */
+.dark .page-hero {
+    background: linear-gradient(135deg, #0b0f1a 0%, #0f172a 50%, #1e293b 100%);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-foreground));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   7. PROJECT FILTERS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.project-filters {
+    padding: 2rem 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme filter enhancements */
+.dark .project-filters {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark theme filter button enhancements */
+.dark .filter-btn {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--color-primary);
+    transition: left var(--transition-normal);
+    z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+    left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: var(--color-primary-foreground);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   8. FEATURED PROJECT - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.featured-project {
+    padding: var(--section-padding) 0;
+    background: var(--color-background);
+}
+
+.featured-project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+}
+
+/* Dark theme featured project enhancements */
+.dark .featured-project-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 8px 32px rgba(15, 23, 42, 0.5);
+}
+
+.featured-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.featured-project-image {
+    position: relative;
+    height: 400px;
+    background: var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.project-screenshot {
+    font-size: 6rem;
+    color: var(--color-primary);
+    transition: all var(--transition-normal);
+}
+
+.featured-project-card:hover .project-screenshot {
+    transform: scale(1.1);
+}
+
+.project-badges {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+}
+
+.featured-badge {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+.status-badge {
+    background: var(--color-success);
+    color: white;
+}
+
+.featured-project-content {
+    padding: 2rem;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-title {
+    font-size: 1.75rem;
+    color: var(--color-foreground);
+    margin: 0;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.project-btn.secondary {
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border: 1px solid var(--color-border);
+}
+
+.project-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.project-description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.project-features {
+    margin-bottom: 2rem;
+}
+
+.project-features h4 {
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+    font-size: 1.1rem;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-muted-foreground);
+}
+
+.feature-list li i {
+    color: var(--color-success);
+    font-size: 0.875rem;
+}
+
+.tech-stack h4 {
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+    font-size: 1.1rem;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tech-tag {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+}
+
+/* Tech stack specific colors */
+.tech-tag.react { background: #61dafb; color: #000; }
+.tech-tag.node { background: #339933; color: #fff; }
+.tech-tag.mongo { background: #47A248; color: #fff; }
+.tech-tag.express { background: #000000; color: #fff; }
+.tech-tag.stripe { background: #008CDD; color: #fff; }
+.tech-tag.aws { background: #FF9900; color: #000; }
+
+/* Default tech tag styling */
+.tech-tag:not([class*=" "]):not([class^="tech-tag "]) {
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+}
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   9. ALL PROJECTS SECTION - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.all-projects {
+    padding: var(--section-padding) 0;
+    background: var(--color-muted);
+}
+
+/* Dark theme all projects enhancements */
+.dark .all-projects {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme project card enhancements */
+.dark .project-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+/* Dark theme project card hover enhancements */
+.dark .project-card:hover {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.2),
+        0 12px 32px rgba(15, 23, 42, 0.6);
+}
+
+.project-image {
+    height: 200px;
+    background: var(--color-muted);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-placeholder {
+    font-size: 3rem;
+    color: var(--color-primary);
+    transition: all var(--transition-normal);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 15, 26, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all var(--transition-normal);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card:hover .project-placeholder {
+    transform: scale(1.2);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all var(--transition-fast);
+}
+
+.project-link:hover {
+    transform: scale(1.1);
+    background: rgba(96, 165, 250, 0.9);
+}
+
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.status-badge.live {
+    background: var(--color-success);
+    color: white;
+}
+
+.status-badge.development {
+    background: var(--color-warning);
+    color: white;
+}
+
+.status-badge.open-source {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+    transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-content .project-title {
+    color: var(--color-primary);
+}
+
+.project-content .project-description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech .tech-tag {
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+}
+
+.project-tech .tech-tag:hover {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transform: translateY(-1px);
+}
+
+.project-metrics {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+.metric i {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   10. GITHUB STATS - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.github-stats {
+    padding: var(--section-padding) 0;
+    background: var(--color-background);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme stat card enhancements */
+.dark .stat-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 4px 16px rgba(15, 23, 42, 0.4);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+/* Dark theme stat card hover enhancements */
+.dark .stat-card:hover {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.2),
+        0 12px 32px rgba(15, 23, 42, 0.6);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    transition: all var(--transition-normal);
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1);
+}
+
+.stat-content .stat-number {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.stat-content .stat-label {
+    color: var(--color-muted-foreground);
+    font-size: 1rem;
+}
+
+.github-link {
+    text-align: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme primary button enhancements */
+.dark .btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark theme primary button hover enhancements */
+.dark .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ==========================================================================
+   11. FOOTER - ENHANCED FOR BLUISH DARK THEME
+   ========================================================================== */
+
+.footer {
+    background: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--color-muted-foreground);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   12. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: var(--section-padding-mobile);
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Mobile Navigation */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: var(--navbar-height);
+        flex-direction: column;
+        background: var(--color-background);
+        width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        text-align: center;
+        transition: var(--transition-normal);
+        box-shadow: var(--shadow-lg);
+        border-top: 1px solid var(--color-border);
+        padding: 2rem 0;
+        overflow-y: auto;
+        gap: 1rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Hero Section */
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Featured Project */
+    .featured-project-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .featured-project-content {
+        padding: 2rem;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .featured-project-image {
+        height: 250px;
+    }
+
+    /* Filters */
+    .filter-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .filter-btn {
+        width: 200px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-project-content {
+        padding: 1.5rem;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   13. ACCESSIBILITY & REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==========================================================================
+   14. THEME TRANSITION ENHANCEMENTS
+   ========================================================================== */
+
+* {
+    transition: 
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+/* Ensure smooth theme transitions */
+.navbar,
+.featured-project-card,
+.project-card,
+.stat-card,
+.filter-btn,
+.btn,
+.footer {
+    transition: 
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal),
+        transform var(--transition-fast);
+}
+
+/* ==========================================================================
+   15. ANIMATIONS & SPECIAL EFFECTS
+   ========================================================================== */
+
+/* Staggered animation for project cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Pulse animation for featured project */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(96, 165, 250, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(96, 165, 250, 0);
+    }
+}
+
+.featured-project-card:hover {
+    animation: pulse 2s infinite;
+}
+
+/* ==========================================================================
+   END OF TECH-PROJECTS.CSS
+   ========================================================================== */
