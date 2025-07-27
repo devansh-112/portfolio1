@@ -1624,6 +1624,188 @@ a:focus {
     from { width: 0; }
     to { width: var(--skill-width, 0%); }
 }
+/* ==========================================================================
+   20. CERTIFICATIONS SCROLL BUTTON - SEGMENT SPECIFIC
+   ========================================================================== */
+
+.certifications-section {
+    position: relative;
+}
+
+.certifications-scroll-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    position: relative;
+}
+
+/* Custom scrollbar for certifications */
+.certifications-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.certifications-scroll-container::-webkit-scrollbar-track {
+    background: var(--color-accent);
+    border-radius: 4px;
+}
+
+.certifications-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+
+.certifications-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: var(--color-foreground);
+}
+
+/* Dark theme scrollbar enhancements */
+.dark .certifications-scroll-container::-webkit-scrollbar-track {
+    background: rgba(51, 65, 85, 0.3);
+}
+
+.dark .certifications-scroll-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.dark .certifications-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #93c5fd, #60a5fa);
+}
+
+/* Scroll indicator for certifications */
+.cert-scroll-indicator {
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 4px;
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.cert-scroll-progress {
+    width: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-success));
+    border-radius: 2px;
+    transition: height 0.2s ease;
+    height: 0%;
+}
+
+/* Certification scroll buttons */
+.cert-scroll-controls {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.cert-scroll-btn {
+    width: 35px;
+    height: 35px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+    opacity: 0.8;
+}
+
+.cert-scroll-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.cert-scroll-btn:active {
+    transform: scale(0.95);
+}
+
+/* Dark theme scroll button enhancements */
+.dark .cert-scroll-btn {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.dark .cert-scroll-btn:hover {
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* Fade effect at edges */
+.certifications-scroll-container::before,
+.certifications-scroll-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity var(--transition-fast);
+}
+
+.certifications-scroll-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--color-background), transparent);
+}
+
+.certifications-scroll-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-background), transparent);
+}
+
+/* Dark theme fade effects */
+.dark .certifications-scroll-container::before {
+    background: linear-gradient(to bottom, #1e293b, transparent);
+}
+
+.dark .certifications-scroll-container::after {
+    background: linear-gradient(to top, #1e293b, transparent);
+}
+
+/* Mobile responsiveness for cert scroll */
+@media (max-width: 768px) {
+    .cert-scroll-controls {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 1rem;
+        transform: none;
+    }
+    
+    .cert-scroll-indicator {
+        display: none;
+    }
+    
+    .certifications-scroll-container {
+        max-height: 300px;
+        padding-right: 5px;
+    }
+}
+
+/* Smooth scroll behavior for certifications */
+.certifications-scroll-container {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced cert item spacing in scroll container */
+.certifications-scroll-container .cert-item {
+    margin-bottom: 1rem;
+}
+
+.certifications-scroll-container .cert-item:last-child {
+    margin-bottom: 0;
+}
 
 /* ==========================================================================
    END OF FOR-RECRUITERS.CSS
