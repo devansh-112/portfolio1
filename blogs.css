@@ -1,7 +1,7 @@
 /* ==========================================================================
    BLOGS PAGE - DEDICATED STYLESHEET
    Author: Devansh Gupta
-   Purpose: Clean, organized CSS specifically for the blogs page
+   Purpose: Clean, organized CSS specifically for the blogs page with scroll functionality
    ========================================================================== */
 
 /* ==========================================================================
@@ -73,23 +73,25 @@ html.dark {
     --transition-slow: 0.5s ease;
 }
 
-/* Dark Theme */
+/* Dark Theme - Enhanced Bluish Dark Version */
 .dark {
-    --color-background: #0f172a;
-    --color-foreground: #f8fafc;
-    --color-primary: #3b82f6;
-    --color-primary-foreground: #ffffff;
-    --color-secondary: #1e293b;
-    --color-secondary-foreground: #cbd5e1;
-    --color-accent: #334155;
-    --color-accent-foreground: #e2e8f0;
-    --color-muted: #1e293b;
-    --color-muted-foreground: #94a3b8;
-    --color-border: #334155;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+    --color-background: #0b0f1a;          /* Dark blue-black background */
+    --color-foreground: #e2e8f0;          /* Cool white text */
+    --color-primary: #60a5fa;             /* Light blue accent */
+    --color-primary-foreground: #0f172a;   /* Dark blue text on primary */
+    --color-secondary: #1e293b;           /* Dark blue secondary */
+    --color-secondary-foreground: #cbd5e1; /* Light blue-gray text */
+    --color-accent: #334155;              /* Medium blue-gray accent */
+    --color-accent-foreground: #f1f5f9;   /* Very light blue-gray */
+    --color-muted: #0f172a;              /* Dark blue muted */
+    --color-muted-foreground: #94a3b8;    /* Blue-gray text */
+    --color-border: #334155;             /* Blue-gray borders */
+    
+    /* Bluish shadows */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.8);
+    --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.6);
+    --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.7);
+    --shadow-xl: 0 20px 25px rgba(15, 23, 42, 0.8);
 }
 
 /* ==========================================================================
@@ -103,6 +105,7 @@ body {
     color: var(--color-foreground);
     background-color: var(--color-background);
     transition: background-color var(--transition-normal), color var(--transition-normal);
+    padding-top: var(--navbar-height);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -170,7 +173,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   5. NAVIGATION BAR
+   5. NAVIGATION BAR - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .navbar {
@@ -184,6 +187,13 @@ a:focus {
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all var(--transition-normal);
+}
+
+/* Dark theme navbar enhancements */
+.dark .navbar {
+    background: rgba(11, 15, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
 }
 
 .nav-container {
@@ -276,13 +286,18 @@ a:focus {
 }
 
 /* ==========================================================================
-   6. HERO SECTION
+   6. HERO SECTION - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .page-hero {
     padding: calc(var(--navbar-height) + 3rem) 0 var(--section-padding);
     background: linear-gradient(135deg, var(--color-background), var(--color-muted));
     text-align: center;
+}
+
+/* Dark theme hero enhancements */
+.dark .page-hero {
+    background: linear-gradient(135deg, #0b0f1a 0%, #0f172a 50%, #1e293b 100%);
 }
 
 .hero-content {
@@ -335,12 +350,17 @@ a:focus {
 }
 
 /* ==========================================================================
-   7. BLOG CATEGORIES FILTER
+   7. BLOG CATEGORIES FILTER - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .blog-categories {
     padding: 2rem 0;
     background: var(--color-muted);
+}
+
+/* Dark theme categories enhancements */
+.dark .blog-categories {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
 .category-filters {
@@ -360,6 +380,12 @@ a:focus {
     transition: all var(--transition-fast);
 }
 
+/* Dark theme filter button enhancements */
+.dark .filter-btn {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
 .filter-btn:hover,
 .filter-btn.active {
     background: var(--color-primary);
@@ -370,7 +396,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   8. FEATURED ARTICLE SECTION
+   8. FEATURED ARTICLE SECTION - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .featured-post {
@@ -387,10 +413,28 @@ a:focus {
     transition: all var(--transition-normal);
 }
 
+/* Dark theme featured article enhancements */
+.dark .featured-article {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.1),
+        0 10px 32px rgba(15, 23, 42, 0.4);
+}
+
 .featured-article:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
     border-color: var(--color-primary);
+}
+
+/* Dark theme featured article hover enhancements */
+.dark .featured-article:hover {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(96, 165, 250, 0.2),
+        0 20px 40px rgba(15, 23, 42, 0.6);
 }
 
 .featured-content {
@@ -487,12 +531,185 @@ a:focus {
 }
 
 /* ==========================================================================
-   9. ALL POSTS SECTION
+   9. ALL POSTS SECTION WITH SCROLL FUNCTIONALITY
    ========================================================================== */
 
 .all-posts {
     padding: var(--section-padding) 0;
     background: var(--color-muted);
+    position: relative;
+}
+
+/* Dark theme all posts enhancements */
+.dark .all-posts {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* BLOGS SCROLL CONTAINER */
+.blogs-scroll-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 15px;
+    position: relative;
+}
+
+/* Custom scrollbar for blogs */
+.blogs-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blogs-scroll-container::-webkit-scrollbar-track {
+    background: var(--color-accent);
+    border-radius: 4px;
+}
+
+.blogs-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+
+.blogs-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: var(--color-foreground);
+}
+
+/* Dark theme scrollbar enhancements */
+.dark .blogs-scroll-container::-webkit-scrollbar-track {
+    background: rgba(51, 65, 85, 0.3);
+}
+
+.dark .blogs-scroll-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.dark .blogs-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #93c5fd, #60a5fa);
+}
+
+/* Scroll indicator for blogs */
+.blogs-scroll-indicator {
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 4px;
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.blogs-scroll-progress {
+    width: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-success));
+    border-radius: 2px;
+    transition: height 0.2s ease;
+    height: 0%;
+}
+
+/* Blog scroll buttons */
+.blogs-scroll-controls {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.blogs-scroll-btn {
+    width: 35px;
+    height: 35px;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+    opacity: 0.8;
+}
+
+.blogs-scroll-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.blogs-scroll-btn:active {
+    transform: scale(0.95);
+}
+
+/* Dark theme scroll button enhancements */
+.dark .blogs-scroll-btn {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.dark .blogs-scroll-btn:hover {
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* Fade effect at edges */
+.blogs-scroll-container::before,
+.blogs-scroll-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity var(--transition-fast);
+}
+
+.blogs-scroll-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--color-background), transparent);
+}
+
+.blogs-scroll-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-background), transparent);
+}
+
+/* Dark theme fade effects */
+.dark .blogs-scroll-container::before {
+    background: linear-gradient(to bottom, #1e293b, transparent);
+}
+
+.dark .blogs-scroll-container::after {
+    background: linear-gradient(to top, #1e293b, transparent);
+}
+
+/* Mobile responsiveness for blog scroll */
+@media (max-width: 768px) {
+    .blogs-scroll-controls {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 1rem;
+        transform: none;
+    }
+    
+    .blogs-scroll-indicator {
+        display: none;
+    }
+    
+    .blogs-scroll-container {
+        max-height: 400px;
+        padding-right: 5px;
+    }
+}
+
+/* Smooth scroll behavior for blogs */
+.blogs-scroll-container {
+    scroll-behavior: smooth;
 }
 
 .blog-grid {
@@ -510,6 +727,12 @@ a:focus {
     border: 2px dashed var(--color-border);
     border-radius: var(--border-radius-lg);
     transition: all var(--transition-normal);
+}
+
+/* Dark theme coming soon enhancements */
+.dark .coming-soon-message {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 2px dashed rgba(51, 65, 85, 0.6);
 }
 
 .coming-soon-message:hover {
@@ -546,7 +769,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   10. BUTTONS
+   10. BUTTONS - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .btn {
@@ -561,11 +784,35 @@ a:focus {
     cursor: pointer;
     border: none;
     font-size: 0.875rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn-primary {
     background: var(--color-primary);
     color: var(--color-primary-foreground);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark theme primary button enhancements */
+.dark .btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
@@ -573,6 +820,11 @@ a:focus {
     opacity: 0.9;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+}
+
+/* Dark theme primary button hover enhancements */
+.dark .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {
@@ -598,13 +850,18 @@ a:focus {
 }
 
 /* ==========================================================================
-   11. NEWSLETTER SECTION
+   11. NEWSLETTER SECTION - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .newsletter-section {
     background: var(--color-primary);
     color: var(--color-primary-foreground);
     padding: var(--section-padding) 0;
+}
+
+/* Dark theme newsletter enhancements */
+.dark .newsletter-section {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
 }
 
 .newsletter-content {
@@ -653,7 +910,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   12. FOOTER
+   12. FOOTER - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .footer {
