@@ -2,6 +2,7 @@
    BLOGS PAGE - DEDICATED STYLESHEET
    Author: Devansh Gupta
    Purpose: Clean, organized CSS specifically for the blogs page with scroll functionality
+   Version: 2.0 - Enhanced with all fixes applied
    ========================================================================== */
 
 /* ==========================================================================
@@ -84,7 +85,7 @@ html.dark {
     --color-accent: #334155;              /* Medium blue-gray accent */
     --color-accent-foreground: #f1f5f9;   /* Very light blue-gray */
     --color-muted: #0f172a;              /* Dark blue muted */
-    --color-muted-foreground: #94a3b8;    /* Blue-gray text */
+    --color-muted-foreground: #cbd5e1;    /* Improved contrast - lighter blue-gray text */
     --color-border: #334155;             /* Blue-gray borders */
     
     /* Bluish shadows */
@@ -144,10 +145,18 @@ button {
     transition: all var(--transition-fast);
 }
 
-button:focus,
-a:focus {
+/* Enhanced Focus Styles for Accessibility */
+button:focus-visible,
+a:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
+    border-radius: var(--border-radius);
+}
+
+/* Remove focus outline for mouse users */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* ==========================================================================
@@ -297,6 +306,7 @@ a:focus {
 
 /* Dark theme hero enhancements */
 .dark .page-hero {
+    background: #0b0f1a; /* Fallback */
     background: linear-gradient(135deg, #0b0f1a 0%, #0f172a 50%, #1e293b 100%);
 }
 
@@ -360,6 +370,7 @@ a:focus {
 
 /* Dark theme categories enhancements */
 .dark .blog-categories {
+    background: #0f172a; /* Fallback */
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
@@ -382,6 +393,7 @@ a:focus {
 
 /* Dark theme filter button enhancements */
 .dark .filter-btn {
+    background: #1e293b; /* Fallback */
     background: linear-gradient(145deg, #1e293b, #0f172a);
     border: 1px solid rgba(51, 65, 85, 0.6);
 }
@@ -415,6 +427,7 @@ a:focus {
 
 /* Dark theme featured article enhancements */
 .dark .featured-article {
+    background: #1e293b; /* Fallback */
     background: linear-gradient(145deg, #1e293b, #0f172a);
     border: 1px solid rgba(51, 65, 85, 0.6);
     box-shadow: 
@@ -538,10 +551,12 @@ a:focus {
     padding: var(--section-padding) 0;
     background: var(--color-muted);
     position: relative;
+    overflow: hidden; /* Contains absolute elements */
 }
 
 /* Dark theme all posts enhancements */
 .dark .all-posts {
+    background: #0f172a; /* Fallback */
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
@@ -551,6 +566,7 @@ a:focus {
     overflow-y: auto;
     padding-right: 15px;
     position: relative;
+    scroll-behavior: smooth;
 }
 
 /* Custom scrollbar for blogs */
@@ -670,12 +686,12 @@ a:focus {
 
 .blogs-scroll-container::before {
     top: 0;
-    background: linear-gradient(to bottom, var(--color-background), transparent);
+    background: linear-gradient(to bottom, var(--color-muted), transparent);
 }
 
 .blogs-scroll-container::after {
     bottom: 0;
-    background: linear-gradient(to top, var(--color-background), transparent);
+    background: linear-gradient(to top, var(--color-muted), transparent);
 }
 
 /* Dark theme fade effects */
@@ -687,37 +703,167 @@ a:focus {
     background: linear-gradient(to top, #1e293b, transparent);
 }
 
-/* Mobile responsiveness for blog scroll */
-@media (max-width: 768px) {
-    .blogs-scroll-controls {
-        position: static;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 1rem;
-        transform: none;
-    }
-    
-    .blogs-scroll-indicator {
-        display: none;
-    }
-    
-    .blogs-scroll-container {
-        max-height: 400px;
-        padding-right: 5px;
-    }
-}
-
-/* Smooth scroll behavior for blogs */
-.blogs-scroll-container {
-    scroll-behavior: smooth;
-}
-
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
 }
+
+/* ==========================================================================
+   10. BLOG CARD STYLES - NEWLY ADDED
+   ========================================================================== */
+
+.blog-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dark theme blog card enhancements */
+.dark .blog-card {
+    background: #1e293b; /* Fallback */
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.dark .blog-card:hover {
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.6);
+}
+
+.blog-image {
+    height: 200px;
+    background: var(--color-muted);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted-foreground);
+    font-size: 2rem;
+    transition: all var(--transition-normal);
+}
+
+.blog-card:hover .blog-image {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.blog-category {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.category-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    text-transform: capitalize;
+}
+
+/* Category Badge Colors */
+.category-badge.short-stories { 
+    background: #ef4444; 
+    color: white;
+}
+
+.category-badge.essays { 
+    background: #f59e0b; 
+    color: white;
+}
+
+.category-badge.poetry { 
+    background: #8b5cf6; 
+    color: white;
+}
+
+.category-badge.novel { 
+    background: #06b6d4; 
+    color: white;
+}
+
+.blog-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    flex-wrap: wrap;
+}
+
+.blog-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.blog-date,
+.blog-read-time {
+    font-size: 0.8rem;
+}
+
+.blog-title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+    line-height: 1.3;
+}
+
+.blog-excerpt {
+    color: var(--color-muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+.blog-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.blog-link {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.875rem;
+    transition: color var(--transition-fast);
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.blog-link:hover {
+    color: var(--color-foreground);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   11. COMING SOON MESSAGE - ENHANCED
+   ========================================================================== */
 
 .coming-soon-message {
     grid-column: 1 / -1;
@@ -731,6 +877,7 @@ a:focus {
 
 /* Dark theme coming soon enhancements */
 .dark .coming-soon-message {
+    background: #1e293b; /* Fallback */
     background: linear-gradient(145deg, #1e293b, #0f172a);
     border: 2px dashed rgba(51, 65, 85, 0.6);
 }
@@ -769,7 +916,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   10. BUTTONS - ENHANCED FOR BLUISH DARK THEME
+   12. BUTTONS - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .btn {
@@ -811,6 +958,7 @@ a:focus {
 
 /* Dark theme primary button enhancements */
 .dark .btn-primary {
+    background: #3b82f6; /* Fallback */
     background: linear-gradient(135deg, #3b82f6, #60a5fa);
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
@@ -819,7 +967,7 @@ a:focus {
     background: var(--color-primary);
     opacity: 0.9;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Dark theme primary button hover enhancements */
@@ -850,7 +998,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   11. NEWSLETTER SECTION - ENHANCED FOR BLUISH DARK THEME
+   13. NEWSLETTER SECTION - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .newsletter-section {
@@ -861,6 +1009,7 @@ a:focus {
 
 /* Dark theme newsletter enhancements */
 .dark .newsletter-section {
+    background: #3b82f6; /* Fallback */
     background: linear-gradient(135deg, #3b82f6, #60a5fa);
 }
 
@@ -910,7 +1059,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   12. FOOTER - ENHANCED FOR BLUISH DARK THEME
+   14. FOOTER - ENHANCED FOR BLUISH DARK THEME
    ========================================================================== */
 
 .footer {
@@ -947,8 +1096,14 @@ a:focus {
 }
 
 /* ==========================================================================
-   13. RESPONSIVE DESIGN
+   15. RESPONSIVE DESIGN - ENHANCED
    ========================================================================== */
+
+@media (max-width: 1024px) {
+    .blogs-scroll-controls {
+        right: -40px; /* Better positioning for tablets */
+    }
+}
 
 @media (max-width: 768px) {
     :root {
@@ -959,7 +1114,7 @@ a:focus {
         padding: 0 1rem;
     }
 
-    /* Mobile Navigation */
+    /* Mobile Navigation - Enhanced z-index */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -975,6 +1130,7 @@ a:focus {
         padding: 2rem 0;
         overflow-y: auto;
         gap: 1rem;
+        z-index: 999; /* Enhanced z-index */
     }
 
     .nav-menu.active {
@@ -1050,11 +1206,31 @@ a:focus {
 
     .footer-links {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     /* Blog Grid */
     .blog-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Mobile responsiveness for blog scroll */
+    .blogs-scroll-controls {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 1rem;
+        transform: none;
+    }
+    
+    .blogs-scroll-indicator {
+        display: none;
+    }
+    
+    .blogs-scroll-container {
+        max-height: 400px;
+        padding-right: 5px;
     }
 }
 
@@ -1082,10 +1258,25 @@ a:focus {
     .stat-number {
         font-size: 2rem;
     }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .category-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        width: 180px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
 }
 
 /* ==========================================================================
-   14. ACCESSIBILITY & REDUCED MOTION
+   16. ACCESSIBILITY & REDUCED MOTION
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1110,7 +1301,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   15. THEME TRANSITION ENHANCEMENTS
+   17. THEME TRANSITION ENHANCEMENTS
    ========================================================================== */
 
 * {
@@ -1127,7 +1318,8 @@ a:focus {
 .coming-soon-message,
 .filter-btn,
 .btn,
-.footer {
+.footer,
+.blog-card {
     transition: 
         background-color var(--transition-normal),
         color var(--transition-normal),
@@ -1137,5 +1329,35 @@ a:focus {
 }
 
 /* ==========================================================================
-   END OF BLOGS.CSS
+   18. ADDITIONAL ENHANCEMENTS
+   ========================================================================== */
+
+/* Improved loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Better selection colors */
+::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+::-moz-selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+/* Improved focus indicators for all interactive elements */
+.filter-btn:focus-visible,
+.blog-link:focus-visible,
+.newsletter-input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius);
+}
+
+/* ==========================================================================
+   END OF BLOGS.CSS - VERSION 2.0 ENHANCED
    ========================================================================== */
